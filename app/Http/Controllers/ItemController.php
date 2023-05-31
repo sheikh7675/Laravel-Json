@@ -1,31 +1,29 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
-use Illuminate\Http\Request;
+
 use App\Models\Item;
-  
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 class ItemController extends Controller
 {
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
     public function index()
     {
-        $input = [
-            'title' => 'Demo Title',
-            'data' => [
-                '1' => 'One',
-                '2' => 'Two',
-                '3' => 'Three'
-            ]
-        ];
-  
-        $item = Item::create($input);
-  
-        dd($item->data);
-  
-    }
+        for ($i = 1; $i <= 50; $i++) {
+            $input = [
+                'title' => 'Demo Title',
+                'data' => [
+                    'price' => rand(5, 100),
+                    'instock' => (rand(0, 1) === 1) ? 'yes' : 'no'
+                ]
+            ];
+
+            $item = Item::create($input);
+        }
+
+return "50 new rows added";
+
 }
+
+} 
